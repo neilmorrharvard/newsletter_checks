@@ -20,6 +20,12 @@ jobs:
         with:
           python-version: '3.x'
 
+      # Create a virtual environment
+      - name: Create virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+        
       # Install dependencies
       - name: Install dependencies
         run: |
