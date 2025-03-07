@@ -1,0 +1,40 @@
+name: Run Second Daily Script
+
+on:
+  workflow_dispatch: 
+  schedule:
+    - cron: '30 21 * * *'  # Runs daily at midnight UTC
+
+jobs:
+  run_second_script:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      # Create a virtual environment
+      - name: Create virtual environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+        
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # Run the second script
+      - name: Run second script
+        run: python scripts/second_script.py
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+
