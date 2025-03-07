@@ -1,28 +1,33 @@
-name: Run daily script
+name: Run Daily Script
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # This schedules the script to run every day at 6 AM UTC
-  workflow_dispatch:  # This allows you to manually trigger the workflow
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
 
 jobs:
-  run-script:
+  run_script:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      # Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
 
-    - name: Run the script
-      run: |
-        python scripts/myscript.py
+      # Run the script
+      - name: Run script
+        run: python scripts/myscript.py
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
 
