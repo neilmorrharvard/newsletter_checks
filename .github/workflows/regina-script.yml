@@ -1,4 +1,4 @@
-name: Run Second Daily Script
+name: Run Regina Daily Script
 
 on:
   workflow_dispatch: 
@@ -32,7 +32,7 @@ jobs:
 
       # Run the second script
       - name: Run second script
-        run: python scripts/second_script.py
+        run: python scripts/regina.py
         env:
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
           EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
