@@ -4,7 +4,7 @@ name: Run Daily Script
 on:
   workflow_dispatch: 
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+    - cron: '30 8 * * *'  # Runs daily at midnight UTC
 
 jobs:
   run_script:
