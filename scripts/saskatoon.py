@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 
 # Define the RSS feeds to monitor
 feeds = [
-    'https://sasktoday.ca/rss/north/saskatoon',
+    'https://sasktoday.ca/rss/saskatoon-today/saskatoon-news',
     'https://sasktoday.ca/rss/provincial-news/newsletter-provincial-news',
     'https://sasktoday.ca/rss/southwest/newsletter-southwest', 'https://sasktoday.ca/rss/southeast/newsletter-southeast',
     'https://sasktoday.ca/rss/north/newsletter-north', 'https://sasktoday.ca/rss/central/newsletter-central'
