@@ -3,7 +3,7 @@ name: Run Saskatoon Daily Script
 on:
   workflow_dispatch: 
   schedule:
-    - cron: '20 21 * * 1-5'  # Runs mon to fri
+    - cron: '00 21 * * 1-5'  # Runs mon to fri
 
 jobs:
   run_second_script:
