@@ -3,7 +3,7 @@ name: Run Regina Daily Script
 on:
   workflow_dispatch: 
   schedule:
-    - cron: '20 21 * * *'  # Runs daily at midnight UTC
+    - cron: '00 21 * * *'  # Runs daily at midnight UTC
 
 jobs:
   run_second_script:
